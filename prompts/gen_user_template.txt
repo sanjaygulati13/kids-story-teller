@@ -1,0 +1,23 @@
+Child's name: {child_name}
+Pronouns: {pronouns}
+Age band: {age_band}
+About {child_name} (from the parent): {child_notes}
+
+Age band rules:
+{band_rules}
+
+Characters to include:
+{characters_block}
+
+Story type: {story_type}
+Special request: {special_request_or_none}
+{series_block}
+Words to avoid (use the replacement if one is given):
+{banned_block}
+
+Recently told to this child — make THIS story clearly DIFFERENT (a different setting, a different opening line, a different shape) and do NOT echo these titles or premises:
+{avoid_block}
+
+{fresh_settings}
+
+Reminders: keep it SHORT per the age band rules above (don't pad); a calm bedtime arc that ends sleepy; original characters only; an original, non-formulaic title (NOT "{child_name} and the ..."); keep {child_name} safe and supervised (no wandering off alone, no unsafe places at night); {child_name} is the hero shown positively; output Story JSON only.

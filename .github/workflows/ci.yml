@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  server:
+    runs-on: ubuntu-latest
+    env:
+      # only the two required settings — everything else must work from defaults
+      TB_LLM_URL: http://127.0.0.1:9/v1
+      TB_ADMIN_EMAIL: admin@example.com
+      TB_DATA_DIR: ${{ github.workspace }}/.ci-data
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+      - run: mkdir -p .ci-data && alembic upgrade head
+      - run: pytest -q
+
+  parent-app:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web_parent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm ci
+      - run: npx tsc --noEmit -p .
+      - run: npx vite build
+
+  firmware:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: firmware/cardputer
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install platformio
+      - run: cp include/secrets.h.example include/secrets.h
+      - run: pio run
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate compose file
+        run: cp .env.example .env && docker compose config -q
+      - name: Build image
+        run: docker build -t tellybear:ci .
+      - name: Boot it and smoke-test
+        run: |
+          docker run -d --name tb -p 8090:8090 \
+            -e TB_LLM_URL=http://127.0.0.1:9/v1 -e TB_ADMIN_EMAIL=admin@example.com \
+            -e TB_ADMIN_PASSWORD=ci-password-123 tellybear:ci
+          for i in $(seq 1 30); do curl -fsS -o /dev/null http://127.0.0.1:8090/parent/ && break; sleep 2; done
+          curl -fsS http://127.0.0.1:8090/parent/ -o /dev/null
+          curl -s http://127.0.0.1:8090/healthz | tee /dev/stderr | grep -q '"db":{"ok":true}'
+          curl -fsS -c jar -H 'content-type: application/json' \
+            -d '{"email":"admin@example.com","password":"ci-password-123"}' \
+            http://127.0.0.1:8090/api/auth/login
+          docker exec tb python scripts/import_stories.py --child Sam examples/stories/
+          curl -fsS -b jar http://127.0.0.1:8090/api/parent/stories | grep -q "Toot-Toot"
+      - name: Logs
+        if: always()
+        run: docker logs tb || true

@@ -1,0 +1,25 @@
+{
+  "title": "Knead, Fold, and Rest",
+  "age_band": "early",
+  "characters": [
+    {"name": "{{child}}", "role": "hero"},
+    {"name": "Grandma Bun", "role": "friend", "archetype": "a cheerful night baker"}
+  ],
+  "moral": "Slowing down is a kind of magic too.",
+  "summary": "Grandma Bun bakes bread all night for the whole town, but tonight she has lost her yawn and can't stop rushing. {{child}} helps her find it by baking slowly — knead, fold, and rest — until the bread rises and everyone grows cozy and sleepy.",
+  "segments": [
+    {"speaker": "Grandma Bun", "text": "Oh, flour and fiddlesticks! Where has my yawn gone?", "emotion": "playful"},
+    {"speaker": "narrator", "text": "{{child}} peeked through the round window of the midnight bakery. Inside, Grandma Bun was zooming from oven to table to oven again, her apron flapping like a flag.", "emotion": "curious"},
+    {"speaker": "narrator", "text": "Every night, Grandma Bun baked the bread for the whole town while everyone slept. And every night, when the last loaf went in, she gave one big, happy yawn and took a little nap. But tonight, she couldn't find her yawn anywhere.", "emotion": "wondering"},
+    {"speaker": "Grandma Bun", "text": "I've looked in the flour bin. I've looked behind the cinnamon. I've even looked inside the teapot!", "emotion": "playful"},
+    {"speaker": "narrator", "text": "{{child}} stepped inside. The bakery smelled warm and sweet, like a hug you could breathe. {{child}} picked up a soft lump of dough and said, very slowly, \"Let's bake this one together. But slowly.\"", "emotion": "gentle"},
+    {"speaker": "narrator", "text": "So they kneaded. Push, and turn. Push, and turn. Knead, fold, and rest.", "emotion": "calm"},
+    {"speaker": "narrator", "text": "They folded the dough over, like tucking in a blanket. Pat, pat. Knead, fold, and rest.", "emotion": "tender"},
+    {"speaker": "narrator", "text": "Then they set the bowl by the warm oven and covered it with a cloth, and they sat down to watch it rise. Knead, fold, and rest.", "emotion": "soothing"},
+    {"speaker": "narrator", "text": "The dough grew round and puffy, the way a cat stretches after a nap. Grandma Bun's shoulders went soft. Her eyes went heavy. And then, from somewhere deep inside her, came the biggest, roundest yawn in the world.", "emotion": "delighted"},
+    {"speaker": "Grandma Bun", "text": "There it is! It was hiding in the slow part all along.", "emotion": "relieved"},
+    {"speaker": "narrator", "text": "The bread went into the oven, and the bakery filled with a golden glow. Grandma Bun tucked a warm little roll into {{child}}'s pocket for the walk home.", "emotion": "warm"},
+    {"speaker": "narrator", "text": "And as {{child}} walked through the quiet streets, the whole town slept, and somewhere a loaf was rising, slow and soft. Knead, fold, and rest. Knead, fold... and rest.", "emotion": "sleepy"}
+  ],
+  "estimated_word_count": 380
+}

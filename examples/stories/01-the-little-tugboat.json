@@ -1,0 +1,27 @@
+{
+  "title": "Toot-Toot, Right Beside You",
+  "age_band": "early",
+  "characters": [
+    {"name": "{{child}}", "role": "hero"},
+    {"name": "Pip", "role": "friend", "archetype": "a small, brave tugboat"},
+    {"name": "Big Gray", "role": "friend", "archetype": "an enormous, shy cargo ship"}
+  ],
+  "moral": "Even the biggest ones feel better with a friend right beside them.",
+  "summary": "On a quiet evening at the harbor, {{child}} and Pip the little tugboat help Big Gray, an enormous and very shy ship, find the courage to come in to the dock. A gentle story about being small, being brave, and staying close.",
+  "segments": [
+    {"speaker": "narrator", "text": "Toot-toot! The little sound bounced across the harbor, and {{child}} looked up from the end of the dock. There, bobbing on the water, was Pip — the smallest tugboat in the whole town, painted red with one bright yellow stripe.", "emotion": "cheerful"},
+    {"speaker": "Pip", "text": "{{child}}! Will you help me? There's a ship out there who won't come in.", "emotion": "hopeful"},
+    {"speaker": "narrator", "text": "Far out past the lighthouse sat a ship so big it looked like a gray hill floating on the sea. It wasn't moving. Not one bit. Its lights blinked slowly, the way eyes blink when someone isn't sure.", "emotion": "curious"},
+    {"speaker": "narrator", "text": "So {{child}} climbed aboard, and Pip puttered out across the water. Putt-putt-putt. The waves went slap, slap against the side. The big ship grew bigger, and bigger, and bigger still.", "emotion": "wondering"},
+    {"speaker": "Big Gray", "text": "Oh, hello. I'm sorry. The harbor is so narrow, and I am so very wide. What if I bump something?", "emotion": "tender"},
+    {"speaker": "narrator", "text": "{{child}} looked up, up, up at the giant ship. Then {{child}} had an idea, and whispered it to Pip.", "emotion": "curious"},
+    {"speaker": "Pip", "text": "Big Gray, we'll go slow. You won't be alone for a single wave. Toot-toot — I'm right beside you.", "emotion": "reassuring"},
+    {"speaker": "narrator", "text": "Pip nudged up close to Big Gray's side. Gently. Gently. And very slowly, the enormous ship began to move. Past the lighthouse. Toot-toot — right beside you.", "emotion": "gentle"},
+    {"speaker": "narrator", "text": "Past the fishing boats, all tucked up for the night. Toot-toot — right beside you. Past the sleepy seagulls on their posts, who opened one eye and closed it again.", "emotion": "playful"},
+    {"speaker": "narrator", "text": "And then — bump. The softest bump in the world. Big Gray was home at the dock, safe and still.", "emotion": "relieved"},
+    {"speaker": "Big Gray", "text": "I did it. We did it. Thank you, little ones.", "emotion": "warm"},
+    {"speaker": "narrator", "text": "The harbor grew quiet. The water went hush, hush against the dock. Big Gray's lights dimmed, one by one, like a giant settling into bed.", "emotion": "soothing"},
+    {"speaker": "narrator", "text": "Pip carried {{child}} back to shore and gave one last, tiny toot. {{child}} walked home, warm and sleepy, and as the night wrapped around the harbor, a little sound drifted across the water. Toot-toot. Right beside you. Always.", "emotion": "sleepy"}
+  ],
+  "estimated_word_count": 390
+}

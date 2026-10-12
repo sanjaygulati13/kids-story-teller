@@ -1,0 +1,15 @@
+[Unit]
+Description=Tellybear API (Uvicorn)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/kids-story-teller
+EnvironmentFile=%h/kids-story-teller/.env
+ExecStart=%h/kids-story-teller/.venv/bin/uvicorn tellybear.main:app --host ${TB_API_HOST} --port ${TB_API_PORT}
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

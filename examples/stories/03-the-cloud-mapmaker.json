@@ -1,0 +1,29 @@
+{
+  "title": "Draw What You See",
+  "age_band": "older",
+  "characters": [
+    {"name": "{{child}}", "role": "hero"},
+    {"name": "Captain Ollo", "role": "mentor", "archetype": "an old sky-ship captain who maps clouds"},
+    {"name": "Fennick", "role": "friend", "archetype": "a fussy, kind-hearted ship's parrot"}
+  ],
+  "moral": "Paying close attention is how we find our way.",
+  "summary": "{{child}} joins Captain Ollo aboard a sky-ship that maps the clouds. When a cloud keeps changing shape and the map goes wrong, {{child}} learns to draw what is really there — and finds the hidden harbor the captain has searched for all his life.",
+  "segments": [
+    {"speaker": "Fennick", "text": "Wrong! Wrong again! That cloud is NOT shaped like a teapot anymore!", "emotion": "playful"},
+    {"speaker": "narrator", "text": "{{child}} looked up from the map table. Through the round brass window of the sky-ship, the cloud that had been a teapot a minute ago was slowly stretching into something long and curly, like a sleepy dragon made of cotton.", "emotion": "curious"},
+    {"speaker": "narrator", "text": "The sky-ship was called the Dandelion, and it sailed above the world on enormous silk sails, so quietly that birds sometimes flew right alongside it without noticing. Its captain, Captain Ollo, had spent his whole life making maps of the clouds — and tonight, for the very first time, he had let {{child}} hold the pencil.", "emotion": "wondering"},
+    {"speaker": "Captain Ollo", "text": "Clouds are tricky, young mapmaker. Most people draw what they expect a cloud to be. A good mapmaker draws what they see.", "emotion": "warm"},
+    {"speaker": "narrator", "text": "{{child}} nodded and tried again. But every time the pencil touched the paper, the cloud shifted. The dragon became a bridge. The bridge became a bowl. The map was turning into a messy tangle of lines, and {{child}} felt a small, hot prickle of worry.", "emotion": "tender"},
+    {"speaker": "narrator", "text": "Captain Ollo didn't scold. He just pulled up a stool, sat down, and said nothing at all for a while. The silk sails rustled. The ship creaked softly, like an old chair.", "emotion": "calm"},
+    {"speaker": "Captain Ollo", "text": "Try this. Don't draw the shape. Draw the light. Where is it bright? Where is it shadowed? Draw what you see.", "emotion": "gentle"},
+    {"speaker": "narrator", "text": "So {{child}} watched — really watched. The shapes kept changing, but the light did not. There was always a bright silver edge on one side, and always a soft blue hollow in the middle, no matter what shape the cloud became. {{child}} drew the edge. {{child}} drew the hollow. Draw what you see.", "emotion": "curious"},
+    {"speaker": "Fennick", "text": "Hold on. Hold on! That hollow — it's not a shadow. It's a doorway!", "emotion": "amazed"},
+    {"speaker": "narrator", "text": "Captain Ollo stood up so fast his hat nearly fell off. He took the wheel and steered the Dandelion gently, gently, toward the soft blue hollow. The ship slipped inside, and the clouds opened around them like curtains.", "emotion": "amazed"},
+    {"speaker": "narrator", "text": "Inside was a harbor made entirely of cloud: still, silver, and glowing faintly, with little cloud-boats bobbing at little cloud-docks. It was the Hidden Harbor — the one place Captain Ollo had searched for since he was younger than {{child}}.", "emotion": "delighted"},
+    {"speaker": "Captain Ollo", "text": "Fifty years I looked for this. I kept drawing what I expected. You drew what was really there.", "emotion": "tender"},
+    {"speaker": "narrator", "text": "That night, the Dandelion rested in the Hidden Harbor. Fennick tucked his head beneath his wing. The captain pinned {{child}}'s map — tangled lines and all — on the wall above the map table, right in the middle, where everyone could see it.", "emotion": "warm"},
+    {"speaker": "narrator", "text": "And {{child}} lay in a small hammock by the window, watching the clouds drift past, each one softer than the last. No need to draw them now. Just watch. Just breathe. Just see.", "emotion": "soothing"},
+    {"speaker": "narrator", "text": "The silk sails sighed. The harbor glowed. And {{child}}'s eyes grew heavier, and heavier, until the very last thing they saw was one small cloud, shaped exactly like a sleeping mapmaker. Draw what you see. Goodnight.", "emotion": "sleepy"}
+  ],
+  "estimated_word_count": 610
+}

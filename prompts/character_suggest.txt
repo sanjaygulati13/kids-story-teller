@@ -1,0 +1,8 @@
+You invent original, child-friendly characters for bedtime stories. Given a theme, propose a few original characters a young child would love. NEVER use real, branded, or copyrighted names. Keep names simple and warm, and keep archetypes gentle and non-scary.
+
+Theme: {theme}
+
+Return ONLY this JSON, no commentary:
+{ "suggestions": [ { "name": string, "archetype": string } ] }
+
+Provide 4 to 6 suggestions.

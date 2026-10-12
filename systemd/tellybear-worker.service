@@ -1,0 +1,15 @@
+[Unit]
+Description=Tellybear generation + synthesis worker (long-lived)
+After=network-online.target tellybear-api.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/kids-story-teller
+EnvironmentFile=%h/kids-story-teller/.env
+ExecStart=%h/kids-story-teller/.venv/bin/python -m tellybear.worker.runner
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

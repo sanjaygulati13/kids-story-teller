@@ -1,0 +1,36 @@
+# Secrets — never commit real values (only *.example files)
+.env
+*.env
+!.env.example
+**/secrets.h
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+build/
+
+# Runtime data (database, audio, voices, logs)
+data/
+
+# Parent app build
+node_modules/
+web_parent/dist/
+*.tsbuildinfo
+
+# PlatformIO / firmware build
+.pio/
+.pio-core/
+
+# Model weights — not part of this repo
+*.gguf
+*.safetensors
+
+# OS / editor
+.DS_Store
+*~
+*.un~
+*.swp
+.pytest_cache/

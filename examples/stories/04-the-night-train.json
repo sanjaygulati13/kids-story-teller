@@ -1,0 +1,29 @@
+{
+  "title": "Every Track Leads Somewhere",
+  "age_band": "older",
+  "characters": [
+    {"name": "{{child}}", "role": "hero"},
+    {"name": "Mrs. Okafor", "role": "guide", "archetype": "a calm, kind train conductor"},
+    {"name": "the music box", "role": "friend"}
+  ],
+  "moral": "When someone feels far from home, a little kindness can help them find the way back.",
+  "summary": "On a sleeper train crossing the desert at night, {{child}} follows a faint, sad melody to the luggage car and finds a homesick music box that has forgotten its song. With the conductor's help, {{child}} returns it to its owner just as the train reaches the oasis.",
+  "segments": [
+    {"speaker": "narrator", "text": "Ding... ding... dee. The tiny sound came from somewhere at the back of the train, and {{child}} sat straight up in the narrow top bunk. Outside the window, the desert rolled by in silver and shadow, and the moon kept pace with the train like a friend who didn't want to say goodbye.", "emotion": "curious"},
+    {"speaker": "narrator", "text": "Ding... ding... dee. Three notes, and then nothing, as if the song had stopped halfway through a sentence.", "emotion": "wondering"},
+    {"speaker": "narrator", "text": "{{child}} slipped down the ladder and padded along the swaying corridor, past compartment after compartment of sleeping travelers. At the very end, standing beside the luggage car door, was the conductor, Mrs. Okafor, with her lantern turned down low.", "emotion": "curious"},
+    {"speaker": "Mrs. Okafor", "text": "You heard it too? I've been hearing it since the last station. I think someone in there is lonely.", "emotion": "gentle"},
+    {"speaker": "narrator", "text": "Together they stepped into the luggage car. Suitcases were stacked like sleeping elephants. Hat boxes. A birdcage with a blanket over it. And on top of a battered blue trunk sat a small wooden music box, its lid open just a crack.", "emotion": "wondering"},
+    {"speaker": "the music box", "text": "Ding... ding... dee. I'm sorry. I can't remember the rest. I'm a long way from home, and when I'm far from home, I forget my song.", "emotion": "tender"},
+    {"speaker": "narrator", "text": "{{child}} picked up the music box carefully, the way you would hold a baby bird. On the bottom, in faded ink, was a label: Car Four, Compartment Nine.", "emotion": "tender"},
+    {"speaker": "Mrs. Okafor", "text": "Car Four is a long walk, through the dining car and the lounge car and the observation car. But I always say: every track leads somewhere.", "emotion": "reassuring"},
+    {"speaker": "narrator", "text": "So off they went. Through the dining car, where the white tablecloths were folded like little tents. Every track leads somewhere. Through the lounge car, where a cat was asleep on the piano. Every track leads somewhere. Through the observation car, with its glass roof full of stars. Every track leads somewhere.", "emotion": "hopeful"},
+    {"speaker": "narrator", "text": "And with each car they passed, the music box remembered one more note. Ding, ding, dee, dum. Ding, ding, dee, dum, dah. By the time they reached Car Four, it was humming almost the whole song.", "emotion": "delighted"},
+    {"speaker": "narrator", "text": "In Compartment Nine, an old man was awake, sitting by the window and looking worried. When he saw the music box, his whole face lit up like a sunrise.", "emotion": "relieved"},
+    {"speaker": "the music box", "text": "I remember now. I remember all of it.", "emotion": "happy"},
+    {"speaker": "narrator", "text": "The old man wound the little key, and the music box played its whole song at last — a slow, sweet lullaby his grandmother used to sing. Outside, the first palm trees of the oasis appeared, black against the stars, and the train began to slow.", "emotion": "warm"},
+    {"speaker": "narrator", "text": "Mrs. Okafor walked {{child}} back to the bunk and tucked the blanket in tight. The train rocked gently, side to side, side to side. Clickety... clack. Clickety... clack.", "emotion": "soothing"},
+    {"speaker": "narrator", "text": "And somewhere down the corridor, the music box played its lullaby, softer and softer, as the train rolled on through the quiet night. Every track leads somewhere. And this one led, at last, to sleep.", "emotion": "sleepy"}
+  ],
+  "estimated_word_count": 640
+}

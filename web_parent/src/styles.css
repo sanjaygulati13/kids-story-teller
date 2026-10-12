@@ -1,0 +1,110 @@
+:root{
+  --night-0:#0d1030; --night-1:#161a40; --night-2:#1f244f; --night-3:#2a3066;
+  --card:#222a5c; --card-hi:#2c3673;
+  --amber:#ffce8a; --amber-deep:#f5a96b; --peach:#ffb3a7; --lav:#b9b6ff; --teal:#8fe0d3;
+  --cream:#fdf6ec; --ink:#0d1030; --muted:#9aa0d6; --ok:#86e6b8; --warn:#ffcf6e;
+  --radius:26px; --radius-sm:16px;
+  --shadow:0 18px 40px -18px rgba(0,0,0,.7); --glow:0 0 40px -6px var(--amber);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body,#root{margin:0;height:100%}
+body{font-family:'Nunito',system-ui,sans-serif;background:var(--night-0);color:var(--cream);
+  display:flex;justify-content:center;overflow:hidden}
+/* Fill the device viewport on phones; center as a phone-width column on larger screens.
+   Progressive height fallbacks: vh (universal) -> svh -> dvh (best, tracks mobile chrome).
+   Without these, a browser lacking dvh gets NO height and the layout collapses. */
+#parent{position:relative;width:100%;max-width:480px;margin:0 auto;
+  height:100vh;height:100svh;height:100dvh;overflow:hidden;
+  background:linear-gradient(180deg,var(--night-1),var(--night-0));display:flex;flex-direction:column}
+h1,h2,h3,.brand,.btn,.tab,.chip{font-family:'Fredoka',sans-serif}
+
+.p-head{padding:26px 22px 8px}
+.brand{font-size:22px;font-weight:600;display:flex;align-items:center;gap:10px}
+.dot-moon{width:24px;height:24px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff7e6,var(--amber));box-shadow:0 0 16px -2px var(--amber)}
+.sub{color:var(--muted);font-weight:700;font-size:13px;margin-top:2px}
+/* reserve room for the absolute tab bar + iOS home indicator so the last control
+   (e.g. "Create story") is always reachable on long pages */
+.p-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:10px 18px calc(104px + env(safe-area-inset-bottom))}
+.p-body::-webkit-scrollbar{display:none}
+
+.card{background:linear-gradient(160deg,var(--card-hi),var(--card));border-radius:var(--radius-sm);
+  padding:16px;margin-bottom:14px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.05)}
+.card h3{font-size:17px;margin:0 0 4px;font-weight:600}
+.for{color:var(--lav);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:1px}
+.summary{color:#dfe2ff;font-size:14.5px;line-height:1.5;margin:10px 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}
+.schip{font-size:12px;font-weight:800;padding:5px 10px;border-radius:99px;display:flex;align-items:center;gap:5px}
+.schip.ok{background:rgba(134,230,184,.14);color:var(--ok)}
+.schip.bad{background:rgba(255,207,110,.16);color:var(--warn)}
+.verdict{font-weight:800;font-size:13px;padding:6px 12px;border-radius:99px;display:inline-flex;align-items:center;gap:6px;margin-bottom:4px}
+.verdict.pass{background:rgba(134,230,184,.16);color:var(--ok)}
+.verdict.flag{background:rgba(255,207,110,.18);color:var(--warn)}
+.actions{display:flex;gap:10px;margin-top:6px}
+.btn{flex:1;border:none;cursor:pointer;font-weight:600;font-size:15px;padding:13px;border-radius:14px;color:var(--ink)}
+.btn:active{transform:scale(.97)}
+.btn.approve{background:linear-gradient(160deg,var(--teal),#5fc7b6)}
+.btn.listen{background:rgba(255,255,255,.1);color:var(--cream)}
+.btn.reject{background:rgba(255,255,255,.08);color:var(--peach)}
+.btn.primary{background:linear-gradient(160deg,var(--amber),var(--amber-deep));width:100%;font-size:17px;padding:15px;margin-top:8px}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.muted-note{color:var(--muted);font-size:12.5px;font-weight:700;margin-top:3px}
+
+label.fl{display:block;color:var(--muted);font-weight:800;font-size:12px;text-transform:uppercase;
+  letter-spacing:1.2px;margin:18px 0 9px}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1.5px solid rgba(255,255,255,.14);background:transparent;color:var(--cream);
+  font-weight:600;font-size:14px;padding:9px 14px;border-radius:99px;cursor:pointer}
+.chip.sel{background:var(--lav);color:var(--ink);border-color:var(--lav)}
+.chip:active{transform:scale(.95)}
+.chip[disabled]{opacity:.5;cursor:not-allowed}
+/* character chip: tap name to select; ✕ to delete */
+.cchip{display:inline-flex;align-items:center;border:1.5px solid rgba(255,255,255,.14);
+  border-radius:99px;overflow:hidden;color:var(--cream)}
+.cchip.sel{background:var(--lav);border-color:var(--lav);color:var(--ink)}
+.cchip .pick{background:none;border:none;color:inherit;font-family:'Fredoka';font-weight:600;
+  font-size:14px;padding:9px 8px 9px 14px;cursor:pointer}
+.cchip .del{background:none;border:none;color:inherit;opacity:.6;cursor:pointer;
+  font-size:13px;padding:9px 12px 9px 4px}
+.cchip .del:active{transform:scale(.9)}
+textarea,input.txt,select.txt{width:100%;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.12);
+  border-radius:14px;color:var(--cream);font-family:'Nunito';font-size:15px;padding:12px 14px;resize:none}
+textarea::placeholder,input.txt::placeholder{color:#8086c0}
+
+.pron{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.pron input{flex:1}
+.hear{flex:none;width:52px;height:52px;border-radius:14px;border:none;cursor:pointer;
+  background:linear-gradient(160deg,var(--amber),var(--amber-deep));color:var(--ink);font-size:22px}
+.ipa{font-family:'Fredoka';color:var(--teal);font-weight:600}
+
+.kidrow{display:flex;align-items:center;gap:12px}
+.kidrow .av{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex:none}
+.toggle{margin-left:auto;width:50px;height:30px;border-radius:99px;background:rgba(255,255,255,.14);position:relative;cursor:pointer;flex:none}
+.toggle.on{background:var(--teal)}
+.toggle b{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.25s}
+.toggle.on b{left:23px}
+
+.toast{position:fixed;left:50%;bottom:130px;transform:translateX(-50%) translateY(20px);
+  background:var(--cream);color:var(--ink);font-weight:800;padding:11px 18px;border-radius:99px;
+  opacity:0;transition:.35s;box-shadow:var(--shadow);font-size:14px;pointer-events:none;z-index:30}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.tabs{position:absolute;bottom:0;left:0;right:0;display:flex;background:rgba(13,16,48,.82);
+  backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.07);
+  padding:8px 6px calc(8px + env(safe-area-inset-bottom))}
+.tab{flex:1;background:none;border:none;color:var(--muted);cursor:pointer;font-weight:600;font-size:11px;
+  display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0}
+.tab .ic{font-size:20px}
+.tab.sel{color:var(--amber)}
+.center{text-align:center;color:var(--muted);font-weight:700;padding:30px 0}
+/* overlay for confirm dialogs (reject/regenerate reason picker) */
+.modal-back{position:fixed;inset:0;background:rgba(10,12,30,.6);backdrop-filter:blur(4px);
+  display:flex;padding:20px;z-index:40}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* selects match the dark inputs (no native white control), with a custom chevron */
+select.txt{appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239aa0d6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat:no-repeat;background-position:right 12px center;padding-right:34px}
+select.txt option{background:var(--night-2);color:var(--cream)}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}

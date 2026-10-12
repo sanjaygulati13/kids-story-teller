@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img" aria-labelledby="t d">
+  <title id="t">How Tellybear works</title>
+  <desc id="d">Six steps: ask, write, check, approve, narrate, play. Writing, checking and narrating run on your own PC.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0.5 L10,5 L0,9.5 z" fill="#B5ABCB"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#5B4A7A" flood-opacity="0.08"/>
+    </filter>
+    <style>
+      text { font-family: ui-rounded, "SF Pro Rounded", "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif; fill: #3A3350; }
+      .title { font-size: 26px; font-weight: 800; }
+      .sub { font-size: 14px; fill: #7A7094; }
+      .num { font-size: 11px; font-weight: 800; fill: #FFFFFF; }
+      .step { font-size: 11.5px; font-weight: 800; letter-spacing: 1.4px; }
+      .tag { font-size: 11.5px; font-weight: 700; fill: #8A80A3; }
+      .head { font-size: 18px; font-weight: 800; }
+      .who { font-size: 13px; font-weight: 700; fill: #8A80A3; }
+      .body { font-size: 13.5px; fill: #4A4362; }
+      .foot { font-size: 13.5px; font-weight: 700; fill: #6E6587; }
+      .card { fill: #FFFFFF; stroke: #EFE6D6; stroke-width: 1.2; }
+      .flow { stroke: #B5ABCB; stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="600" rx="22" fill="#FFF8EF"/>
+  <text x="40" y="52" class="title">How Tellybear works</text>
+  <text x="40" y="76" class="sub">From "tell me a story" to a narrated story in a few minutes — with a parent in the loop.</text>
+
+  <g transform="translate(30,105)" filter="url(#shadow)">
+    <rect class="card" width="250" height="185" rx="16"/>
+    <rect x="16" y="15" width="82" height="26" rx="13" fill="#EEEAFB"/>
+    <circle cx="29" cy="28" r="9" fill="#5B4FC0"/>
+    <text x="29" y="32" class="num" text-anchor="middle">1</text>
+    <text x="45" y="32.2" class="step" fill="#5B4FC0" style="fill:#5B4FC0">ASK</text>
+    <text x="18" y="68" class="head">Ask for a story</text>
+    <text x="18" y="88" class="who">Parent or child</text>
+    <text class="body"><tspan x="18" y="112">Pick a child, a story type and</tspan><tspan x="18" y="130">characters in the parent app —</tspan><tspan x="18" y="148">or the child holds a key on the</tspan><tspan x="18" y="166">device and just asks out loud.</tspan></text>
+  </g>
+  <g transform="translate(325,105)" filter="url(#shadow)">
+    <rect class="card" width="250" height="185" rx="16"/>
+    <rect x="16" y="15" width="98" height="26" rx="13" fill="#FCEFDB"/>
+    <circle cx="29" cy="28" r="9" fill="#A8651C"/>
+    <text x="29" y="32" class="num" text-anchor="middle">2</text>
+    <text x="45" y="32.2" class="step" fill="#A8651C" style="fill:#A8651C">WRITE</text>
+    <g transform="translate(152,22)">
+      <path d="M1,6 L7,1 L13,6 M3,5 L3,11.5 L11,11.5 L11,5" fill="none" stroke="#7D7397" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="18" y="10.5" class="tag">On your PC</text>
+    </g>
+    <text x="18" y="68" class="head">Storyteller LLM</text>
+    <text x="18" y="88" class="who">Creativity</text>
+    <text class="body"><tspan x="18" y="112">Writes an original story for that</tspan><tspan x="18" y="130">one child: their age, name, likes,</tspan><tspan x="18" y="148">recurring cast and language —</tspan><tspan x="18" y="166">as a script of lines and voices.</tspan></text>
+  </g>
+  <g transform="translate(620,105)" filter="url(#shadow)">
+    <rect class="card" width="250" height="185" rx="16"/>
+    <rect x="16" y="15" width="98" height="26" rx="13" fill="#E1F1F0"/>
+    <circle cx="29" cy="28" r="9" fill="#1F7A7C"/>
+    <text x="29" y="32" class="num" text-anchor="middle">3</text>
+    <text x="45" y="32.2" class="step" fill="#1F7A7C" style="fill:#1F7A7C">CHECK</text>
+    <g transform="translate(152,22)">
+      <path d="M1,6 L7,1 L13,6 M3,5 L3,11.5 L11,11.5 L11,5" fill="none" stroke="#7D7397" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="18" y="10.5" class="tag">On your PC</text>
+    </g>
+    <text x="18" y="68" class="head">Judge LLM</text>
+    <text x="18" y="88" class="who">Safety and quality</text>
+    <text class="body"><tspan x="18" y="112">Eight safety checks for a young</tspan><tspan x="18" y="130">child, a craft score, and a short</tspan><tspan x="18" y="148">summary for the parent. Anything</tspan><tspan x="18" y="166">unclear is flagged, never passed.</tspan></text>
+  </g>
+  <g transform="translate(30,365)" filter="url(#shadow)">
+    <rect class="card" width="250" height="185" rx="16"/>
+    <rect x="16" y="15" width="113" height="26" rx="13" fill="#FBE8E3"/>
+    <circle cx="29" cy="28" r="9" fill="#B4492F"/>
+    <text x="29" y="32" class="num" text-anchor="middle">4</text>
+    <text x="45" y="32.2" class="step" fill="#B4492F" style="fill:#B4492F">APPROVE</text>
+    <text x="18" y="68" class="head">You, in ten seconds</text>
+    <text x="18" y="88" class="who">Parent</text>
+    <text class="body"><tspan x="18" y="112">Read the summary on your phone</tspan><tspan x="18" y="130">and tap Approve. Stories a child</tspan><tspan x="18" y="148">asks for out loud go ahead only</tspan><tspan x="18" y="166">after two clean safety checks.</tspan></text>
+  </g>
+  <g transform="translate(325,365)" filter="url(#shadow)">
+    <rect class="card" width="250" height="185" rx="16"/>
+    <rect x="16" y="15" width="113" height="26" rx="13" fill="#E5ECFA"/>
+    <circle cx="29" cy="28" r="9" fill="#3F62B5"/>
+    <text x="29" y="32" class="num" text-anchor="middle">5</text>
+    <text x="45" y="32.2" class="step" fill="#3F62B5" style="fill:#3F62B5">NARRATE</text>
+    <g transform="translate(152,22)">
+      <path d="M1,6 L7,1 L13,6 M3,5 L3,11.5 L11,11.5 L11,5" fill="none" stroke="#7D7397" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="18" y="10.5" class="tag">On your PC</text>
+    </g>
+    <text x="18" y="68" class="head">A cast of voices</text>
+    <text x="18" y="88" class="who">Text to speech</text>
+    <text class="body"><tspan x="18" y="112">A narrator plus a voice for each</tspan><tspan x="18" y="130">character, emotion on every line,</tspan><tspan x="18" y="148">slow bedtime pacing — even Mom's</tspan><tspan x="18" y="166">or Dad's own cloned voice.</tspan></text>
+  </g>
+  <g transform="translate(620,365)" filter="url(#shadow)">
+    <rect class="card" width="250" height="185" rx="16"/>
+    <rect x="16" y="15" width="90" height="26" rx="13" fill="#E6F2E1"/>
+    <circle cx="29" cy="28" r="9" fill="#3F7834"/>
+    <text x="29" y="32" class="num" text-anchor="middle">6</text>
+    <text x="45" y="32.2" class="step" fill="#3F7834" style="fill:#3F7834">PLAY</text>
+    <text x="18" y="68" class="head">Story time</text>
+    <text x="18" y="88" class="who">Child</text>
+    <text class="body"><tspan x="18" y="112">It appears in that child's own</tspan><tspan x="18" y="130">player on any tablet, or on the</tspan><tspan x="18" y="148">Tellybear pocket device. Played</tspan><tspan x="18" y="166">and favorite stories remembered.</tspan></text>
+  </g>
+
+  <path class="flow" d="M286,197 L319,197" marker-end="url(#arrow)"/>
+  <path class="flow" d="M581,197 L614,197" marker-end="url(#arrow)"/>
+  <path class="flow" d="M745,296 L745,318 Q745,330 733,330 L167,330 Q155,330 155,342 L155,358" marker-end="url(#arrow)"/>
+  <path class="flow" d="M286,457 L319,457" marker-end="url(#arrow)"/>
+  <path class="flow" d="M581,457 L614,457" marker-end="url(#arrow)"/>
+
+  <text x="450" y="583" class="foot" text-anchor="middle">Writing, checking and narrating all happen on your own PC — privately, no cloud, no accounts.</text>
+</svg>

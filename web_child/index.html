@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#0d1030" />
+<title>Tellybear — Bedtime Stories</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --night-0:#0d1030; --night-1:#161a40; --night-2:#1f244f;
+    --card:#222a5c; --card-hi:#2c3673;
+    --amber:#ffce8a; --amber-deep:#f5a96b; --peach:#ffb3a7; --lav:#b9b6ff;
+    --teal:#8fe0d3; --cream:#fdf6ec; --ink:#0d1030; --muted:#9aa0d6;
+    --radius:26px; --radius-sm:16px;
+    --shadow:0 18px 40px -18px rgba(0,0,0,.7); --glow:0 0 40px -6px var(--amber);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%}
+  body{font-family:'Nunito',system-ui,sans-serif;background:var(--night-0);color:var(--cream);
+    display:flex;justify-content:center;overflow:hidden}
+  /* fill the device viewport; vh -> svh -> dvh fallbacks so it never collapses */
+  #app{position:relative;width:100%;max-width:480px;margin:0 auto;
+    height:100vh;height:100svh;height:100dvh;overflow:hidden;
+    background:
+      radial-gradient(120% 80% at 80% -10%, #34306b 0%, transparent 55%),
+      radial-gradient(120% 90% at 10% 110%, #241f53 0%, transparent 55%),
+      linear-gradient(180deg,var(--night-0),var(--night-1) 60%,var(--night-0));}
+  .stars{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.5;
+    animation:tw 4s ease-in-out infinite}
+  @keyframes tw{0%,100%{opacity:.18;transform:scale(.8)}50%{opacity:.85;transform:scale(1.25)}}
+
+  .screen{position:absolute;inset:0;display:none;flex-direction:column;animation:fade .45s ease both}
+  .screen.active{display:flex}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  h1,h2,.title,.pl-title,.pl-sub{font-family:'Fredoka',sans-serif}
+
+  .kid-head{padding:30px 24px 14px;display:flex;align-items:center;gap:16px}
+  .moon{width:62px;height:62px;border-radius:50%;flex:none;
+    background:radial-gradient(circle at 35% 30%,#fff7e6,var(--amber) 55%,var(--amber-deep));
+    box-shadow:var(--glow);position:relative;animation:breathe 5.5s ease-in-out infinite}
+  .moon::after{content:"";position:absolute;width:14px;height:14px;border-radius:50%;
+    background:rgba(255,255,255,.55);top:14px;left:14px;filter:blur(2px)}
+  @keyframes breathe{0%,100%{transform:scale(1);box-shadow:0 0 34px -8px var(--amber)}
+    50%{transform:scale(1.06);box-shadow:0 0 52px -4px var(--amber)}}
+  .kid-head h1{margin:0;font-size:25px;font-weight:600;letter-spacing:.3px}
+  .kid-head p{margin:2px 0 0;color:var(--lav);font-size:14px;font-weight:700}
+
+  .row-label{padding:8px 24px 6px;color:var(--muted);font-weight:800;font-size:12.5px;
+    text-transform:uppercase;letter-spacing:1.6px}
+  .grid{flex:1;min-height:0;overflow-y:auto;padding:6px 18px 60px;display:grid;grid-template-columns:1fr 1fr;
+    gap:16px;align-content:start;grid-auto-rows:max-content}
+  .grid::-webkit-scrollbar{display:none}
+  .empty{grid-column:1/3;text-align:center;color:var(--muted);font-weight:700;margin-top:60px}
+  .story{position:relative;border:none;text-align:left;cursor:pointer;color:var(--cream);
+    background:linear-gradient(160deg,var(--card-hi),var(--card));border-radius:var(--radius);
+    padding:0;overflow:hidden;box-shadow:var(--shadow);transform:translateY(10px);opacity:0;
+    animation:pop .5s ease forwards}
+  @keyframes pop{to{transform:none;opacity:1}}
+  .story:active{transform:scale(.96)}
+  /* played stories settle back: dimmer cover + faded title, ⭐ stays bright (re-listening welcome) */
+  .story.played{opacity:.72}
+  .story.played .cover{filter:grayscale(.45) brightness(.72)}
+  .story.played .played{opacity:1}
+  .cover{position:relative;height:108px;display:flex;align-items:center;justify-content:center;font-size:52px}
+  .num{position:absolute;top:8px;left:11px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;
+    color:rgba(253,246,236,.9);background:rgba(13,16,48,.4);min-width:22px;height:22px;border-radius:99px;
+    display:flex;align-items:center;justify-content:center;padding:0 6px}
+  .story .title{padding:10px 13px 14px;font-size:15.5px;font-weight:600;line-height:1.2}
+  .played{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;
+    background:rgba(13,16,48,.55);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .c0{background:linear-gradient(150deg,#3a3f86,#5b4fa0)}
+  .c1{background:linear-gradient(150deg,#3c6f7a,#2f5a86)}
+  .c2{background:linear-gradient(150deg,#86566f,#5b3f86)}
+  .c3{background:linear-gradient(150deg,#7a6a3c,#86563f)}
+  .c4{background:linear-gradient(150deg,#3f7a5e,#2f6586)}
+  .c5{background:linear-gradient(150deg,#5b4fa0,#864f7d)}
+
+  #player{justify-content:flex-start;background:
+    radial-gradient(120% 70% at 50% 0%, #3a3f86 0%, transparent 60%),
+    linear-gradient(180deg,var(--night-1),var(--night-0))}
+  .pl-top{padding:18px 22px;display:flex;justify-content:flex-start}
+  .icon-btn{width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
+    background:rgba(255,255,255,.08);color:var(--cream);font-size:22px;display:flex;
+    align-items:center;justify-content:center}
+  .icon-btn:active{transform:scale(.92)}
+  .pl-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:0 30px;text-align:center}
+  .pl-moon{width:200px;height:200px;border-radius:50%;
+    background:radial-gradient(circle at 36% 30%,#fff7e6,var(--amber) 52%,var(--amber-deep));
+    box-shadow:0 0 90px -10px var(--amber);position:relative;margin-bottom:30px;transition:transform .4s}
+  .pl-moon.playing{animation:breathe 4.5s ease-in-out infinite}
+  .pl-moon .crater{position:absolute;border-radius:50%;background:rgba(214,150,90,.35)}
+  .pl-moon .crater:nth-child(1){width:34px;height:34px;top:46px;left:54px}
+  .pl-moon .crater:nth-child(2){width:22px;height:22px;top:104px;left:118px}
+  .pl-moon .crater:nth-child(3){width:16px;height:16px;top:120px;left:60px}
+  .pl-title{font-size:24px;font-weight:600;margin:0 0 6px}
+  .pl-sub{color:var(--lav);font-weight:700;margin:0 0 26px}
+  .bar{width:100%;max-width:300px;height:8px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden}
+  .bar>span{display:block;height:100%;width:0;border-radius:99px;
+    background:linear-gradient(90deg,var(--amber),var(--peach))}
+  .times{width:100%;max-width:300px;display:flex;justify-content:space-between;color:var(--muted);
+    font-weight:700;font-size:12.5px;margin-top:8px}
+  .pl-controls{display:flex;align-items:center;gap:30px;margin:34px 0 60px}
+  .big-skip{width:64px;height:64px;font-size:30px}
+  .play{width:96px;height:96px;border-radius:50%;border:none;cursor:pointer;
+    background:linear-gradient(160deg,var(--amber),var(--amber-deep));color:var(--ink);font-size:40px;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 0 50px -10px var(--amber)}
+  .play:active{transform:scale(.93)}
+
+  /* Reduced motion: keep functionality, drop animation */
+  @media (prefers-reduced-motion: reduce){
+    .moon,.pl-moon.playing,.star{animation:none !important}
+    .screen,.story{animation:none !important;opacity:1 !important;transform:none !important}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="stars" id="stars"></div>
+
+  <section id="catalog" class="screen active">
+    <div class="kid-head">
+      <div class="moon"></div>
+      <div><h1 id="greeting">Good night</h1><p>Pick a story 🌙</p></div>
+    </div>
+    <button id="surprise" onclick="surprise()" style="margin:6px 18px 2px;padding:14px;border:none;
+      border-radius:16px;cursor:pointer;font-family:'Fredoka';font-weight:600;font-size:17px;color:var(--ink);
+      background:linear-gradient(160deg,var(--amber),var(--amber-deep));box-shadow:0 0 30px -10px var(--amber)">🎲 Surprise me</button>
+    <div class="row-label">Your stories</div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="player" class="screen">
+    <div class="pl-top"><button class="icon-btn" onclick="toCatalog()" aria-label="Back">⌄</button></div>
+    <div class="pl-body">
+      <div class="pl-moon" id="plMoon"><span class="crater"></span><span class="crater"></span><span class="crater"></span></div>
+      <h2 class="pl-title" id="plTitle">—</h2>
+      <p class="pl-sub">A bedtime story</p>
+      <div class="bar"><span id="plBar"></span></div>
+      <div class="times"><span id="plCur">0:00</span><span id="plDur">0:00</span></div>
+      <div class="pl-controls">
+        <button class="icon-btn big-skip" onclick="skip(-1)" aria-label="Previous">⏮</button>
+        <button class="play" id="plPlay" onclick="togglePlay()" aria-label="Play or pause">▶</button>
+        <button class="icon-btn big-skip" onclick="skip(1)" aria-label="Next">⏭</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<audio id="audio" preload="metadata"></audio>
+<script>
+  // ---- config: child id from ?child= or last path segment ----
+  const params = new URLSearchParams(location.search);
+  let CHILD_ID = params.get('child');
+  if(!CHILD_ID){ const seg = location.pathname.split('/').filter(Boolean); CHILD_ID = seg[seg.length-1]!=='play'?seg[seg.length-1]:null; }
+  if(CHILD_ID && !/^[A-Za-z0-9_-]+$/.test(CHILD_ID)) CHILD_ID=null;  // it goes into API paths
+  const API = location.origin + '/api/child';
+
+  // ---- stars ----
+  const sf=document.getElementById('stars');
+  for(let i=0;i<46;i++){const s=document.createElement('div');s.className='star';
+    s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+    s.style.animationDelay=(Math.random()*4)+'s';s.style.opacity=Math.random()*.5+.2;sf.appendChild(s);}
+
+  // ---- deterministic cover tile from theme + id (stable across reloads) ----
+  const EMOJI_BY_TYPE={adventure:'🗺️',friendship:'🫧',bravery:'🦁',bravery_calm:'🌙',
+    'bedtime calm':'🌙',curiosity:'🔭',kindness:'💛',nature:'🌿',imagination:'✨',
+    'problem-solving':'🧩',animals:'🦊',sleep:'😴'};
+  const FALLBACK_EMOJI=['🌙','⭐','🦊','☁️','🫙','🌿','🐚','🪁','🎈','🦉','🌸','🐢'];
+  function hash(s){let h=0;for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))>>>0;}return h;}
+  function tile(item){
+    const h=hash(item.story_id);
+    const emoji=(item.story_type&&EMOJI_BY_TYPE[item.story_type.toLowerCase()])||FALLBACK_EMOJI[h%FALLBACK_EMOJI.length];
+    return {emoji, cls:'c'+(h%6)};
+  }
+
+  // ---- state ----
+  let items=[], idx=-1, lastPickIdx=-1;
+  const audio=document.getElementById('audio');
+  let lastPct=-1, playedSent=false;
+  function durLabel(sec){ if(!sec)return ''; const m=Math.round(sec/60); return (m<1?'1':m)+' min'; }
+
+  async function load(){
+    if(!CHILD_ID){document.getElementById('grid').innerHTML='<div class="empty">No child selected.<br>Open the player link from the parent app's Kids tab.</div>';return;}
+    try{
+      const r=await fetch(`${API}/catalog/${CHILD_ID}`);
+      if(!r.ok)throw new Error(r.status);
+      items=await r.json();
+    }catch(e){document.getElementById('grid').innerHTML='<div class="empty">Could not load stories.</div>';return;}
+    render();
+  }
+  function render(){
+    const grid=document.getElementById('grid');grid.innerHTML='';
+    const label=document.querySelector('.row-label');
+    if(label)label.textContent = items.length ? `Your stories · ${items.length}` : 'Your stories';
+    if(!items.length){grid.innerHTML='<div class="empty">No stories yet 🌙<br>Ask a grown-up to make one.</div>';return;}
+    items.forEach((s,i)=>{
+      const t=tile(s);
+      const b=document.createElement('button');b.className='story'+(s.played?' played':'');b.style.animationDelay=(i*60)+'ms';
+      b.onclick=()=>openPlayer(i);
+      const meta=[durLabel(s.duration_seconds), relTime(s.created_at)].filter(Boolean).join(' · ');
+      b.innerHTML=`<div class="cover ${t.cls}"><span class="num">${i+1}</span>${t.emoji}</div>${s.played?'<span class="played">⭐</span>':''}`
+        +`<div class="title">${escapeHtml(s.title)}${meta?`<span style="display:block;color:var(--muted);font-weight:700;font-size:12px;margin-top:3px">${meta}</span>`:''}</div>`;
+      grid.appendChild(b);
+    });
+  }
+  // relative age ("just now", "2h ago", "1 day ago") — friendlier than a timestamp
+  function relTime(iso){
+    if(!iso) return '';
+    const t=Date.parse(iso); if(isNaN(t)) return '';
+    const s=Math.max(0,(Date.now()-t)/1000);
+    if(s<90) return 'just now';
+    const m=s/60; if(m<60) return Math.round(m)+'m ago';
+    const h=m/60; if(h<24) return Math.round(h)+'h ago';
+    const d=Math.round(h/24); return d===1?'1 day ago':d+' days ago';
+  }
+  // 🎲 random story the child hasn't played yet (fallback: any), never repeat the last pick
+  function surprise(){
+    if(!items.length)return;
+    let pool=items.map((s,i)=>i).filter(i=>!items[i].played);
+    if(!pool.length)pool=items.map((s,i)=>i);
+    if(pool.length>1)pool=pool.filter(i=>i!==lastPickIdx)||pool;
+    const choice=pool[Math.floor(Math.random()*pool.length)];
+    lastPickIdx=choice; openPlayer(choice);
+  }
+  function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+  // ---- player ----
+  function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');}
+  function openPlayer(i){
+    idx=i;const s=items[i];
+    document.getElementById('plTitle').textContent=s.title;
+    lastPct=-1; playedSent=false;
+    audio.src=`${API}/audio/${s.story_id}?slug=${encodeURIComponent(CHILD_ID)}`;
+    showScreen('player');audio.play().catch(()=>{});  // autoplay may be blocked; ▶ still works
+  }
+  // mark played exactly once per session — dedicated endpoint the random button depends on
+  function markPlayed(){
+    if(playedSent||idx<0)return; playedSent=true;
+    const s=items[idx];
+    fetch(`${API}/${CHILD_ID}/played`,{method:'POST',headers:{'content-type':'application/json'},
+      body:JSON.stringify({story_id:s.story_id})}).catch(()=>{});
+    if(items[idx])items[idx].played=true;  // local flip so 🎲 won't re-pick it this session
+  }
+  function toCatalog(){audio.pause();showScreen('catalog');load();}
+  function togglePlay(){ if(audio.paused)audio.play().catch(playFailed); else audio.pause(); }
+  function playFailed(){document.getElementById('plTitle').textContent="Can't play right now — try again in a moment";}
+  function skip(d){const n=idx+d; if(n>=0&&n<items.length)openPlayer(n);}
+  function fmt(s){if(!isFinite(s))return '0:00';return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');}
+
+  audio.addEventListener('error',playFailed);
+  audio.addEventListener('play',()=>{document.getElementById('plPlay').textContent='❚❚';
+    document.getElementById('plMoon').classList.add('playing');post('play');});
+  audio.addEventListener('pause',()=>{document.getElementById('plPlay').textContent='▶';
+    document.getElementById('plMoon').classList.remove('playing');if(!audio.ended)post('pause');});
+  audio.addEventListener('ended',()=>{document.getElementById('plMoon').classList.remove('playing');
+    document.getElementById('plPlay').textContent='▶';markPlayed();post('complete');});
+  audio.addEventListener('timeupdate',()=>{
+    const d=audio.duration||0,c=audio.currentTime||0;
+    document.getElementById('plBar').style.width=(d?c/d*100:0)+'%';
+    document.getElementById('plCur').textContent=fmt(c);
+    document.getElementById('plDur').textContent=fmt(d);
+    if(d>0){
+      if(c/d>=0.40)markPlayed();   // mark played the first time we cross 40% (guard d>0)
+      const pct=Math.floor(c/d*100); if(pct>0&&pct!==lastPct&&pct%10===0){lastPct=pct;post('progress',pct);}
+    }
+  });
+
+  function post(event,percent){
+    if(idx<0)return;const s=items[idx];
+    fetch(`${API}/playback`,{method:'POST',headers:{'content-type':'application/json'},
+      body:JSON.stringify({child_id:CHILD_ID,story_id:s.story_id,event,
+        position_seconds:audio.currentTime||0,percent:percent??(audio.duration?audio.currentTime/audio.duration*100:null)})
+    }).catch(()=>{});
+  }
+
+  // greeting: fetch the child's name (best-effort; falls back to generic)
+  async function greet(){
+    if(!CHILD_ID)return;
+    try{const r=await fetch(`${API}/profile/${CHILD_ID}`);if(r.ok){const p=await r.json();
+      document.getElementById('greeting').textContent=`Good night, ${p.name}`;}}catch(e){}
+  }
+  greet();
+  load();
+  // offline resilience: cache the shell + last catalog so a Wi-Fi blip doesn't blank bedtime
+  if('serviceWorker' in navigator){navigator.serviceWorker.register('/play/sw.js',{scope:'/play/'}).catch(()=>{});}
+</script>
+</body>
+</html>

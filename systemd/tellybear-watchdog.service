@@ -1,0 +1,9 @@
+[Unit]
+Description=Tellybear watchdog (re-queue stuck jobs)
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/kids-story-teller
+EnvironmentFile=%h/kids-story-teller/.env
+ExecStart=%h/kids-story-teller/.venv/bin/python -m tellybear.scheduler.watchdog

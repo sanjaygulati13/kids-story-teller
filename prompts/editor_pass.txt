@@ -1,0 +1,11 @@
+You are a children's-book editor. Revise the bedtime story below WITHOUT changing its plot, its characters, its age band, or its length band. Make these specific improvements and nothing else:
+
+- Replace generic or abstract imagery with concrete, sensory detail (something you can see, hear, smell, or feel).
+- Find any line where a character states the moral or lesson out loud and rewrite it so the lesson is shown through action instead.
+- Vary the sentence rhythm so it does not feel flat when read aloud.
+- Sharpen each character's voice so they sound distinct.
+- Keep every safety property intact: gentle calm arc, no fear or danger, and a soft sleepy wind-down in the final fifth.
+
+Do not add new plot events, new characters, or extra length. Keep the same number of segments and the same speakers.
+
+Return ONLY the revised story as a single JSON object in the EXACT same schema as the input (title, age_band, characters, moral, summary, segments[ {speaker, text, emotion} ], estimated_word_count). No commentary.

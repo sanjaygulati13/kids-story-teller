@@ -1,0 +1,63 @@
+# Tellybear with Docker Compose.
+#
+#   cp .env.example .env      # set TB_LLM_URL (+ TB_LLM_API_KEY) and TB_ADMIN_EMAIL
+#   docker compose up -d
+#   docker compose logs api | grep -A1 "Admin login"     # first run: your generated password
+#
+# Then open http://<this machine>:8090/parent. Story/judge models, TTS engine and voice, and the
+# daily limit are set in the app's Admin tab.
+
+x-app: &app
+  build: .
+  image: tellybear:local
+  env_file: .env
+  environment:
+    # container paths/defaults; everything else comes from .env
+    TB_DATA_DIR: /data
+    TB_DB_URL: ""
+    TB_GPU_HANDOFF: "false"
+    TB_TTS_ENGINE: ${TB_TTS_ENGINE:-kokoro}
+    TB_KOKORO_URL: ${TB_KOKORO_URL:-http://kokoro:8880}
+    TZ: ${TZ:-UTC}
+  volumes:
+    - tellybear-data:/data
+  extra_hosts:
+    # lets TB_LLM_URL / TB_CHATTERBOX_URL point at services on the Docker host:
+    #   http://host.docker.internal:8080/v1
+    - "host.docker.internal:host-gateway"
+  restart: unless-stopped
+
+services:
+  api:
+    <<: *app
+    command: ["api"]
+    ports:
+      - "${TB_PORT:-8090}:8090"
+    depends_on:
+      - kokoro
+
+  worker:
+    <<: *app
+    command: ["worker"]
+    healthcheck:
+      disable: true   # no web server in this container
+    depends_on:
+      - api
+
+  scheduler:
+    <<: *app
+    command: ["scheduler"]
+    healthcheck:
+      disable: true
+    depends_on:
+      - api
+
+  # CPU text-to-speech, so stories can be narrated out of the box. For more expressive voices and
+  # parent voice cloning, run Chatterbox-TTS-Server on a GPU box, then enter its URL and switch the
+  # engine to Chatterbox in the Admin tab.
+  kokoro:
+    image: ghcr.io/remsky/kokoro-fastapi-cpu:v0.8.1
+    restart: unless-stopped
+
+volumes:
+  tellybear-data:

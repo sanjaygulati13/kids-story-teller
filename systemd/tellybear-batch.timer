@@ -1,0 +1,11 @@
+[Unit]
+Description=Tellybear evening batch timer
+# Fires daily at the evening batch hour. EDIT OnCalendar to match TB_BATCH_HOUR_LOCAL
+# in your .env (default 20:00 local). systemd timers cannot read the env var directly.
+
+[Timer]
+OnCalendar=*-*-* 20:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,1 @@
+Your previous response was not valid JSON matching the required schema. Do not apologize or explain. Return ONLY a single valid JSON object that exactly matches the schema you were given — no markdown, no code fences, no text before or after. Keep the same story; fix only the formatting.
