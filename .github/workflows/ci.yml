@@ -34,6 +34,11 @@ jobs:
       - run: npm ci
       - run: npx tsc --noEmit -p .
       - run: npx vite build
+      - name: Syntax-check the child player's inline script
+        working-directory: web_child
+        run: |
+          python3 -c "import re;open('/tmp/child.js','w').write(chr(10).join(re.findall(r'<script>(.*?)</script>',open('index.html').read(),re.S)))"
+          node --check /tmp/child.js
 
   firmware:
     runs-on: ubuntu-latest

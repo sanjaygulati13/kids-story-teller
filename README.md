@@ -126,6 +126,23 @@ passes are clean. More in [`tellybear/safety/README.md`](tellybear/safety/README
 5. **Narrate.** The worker voices the script line by line and makes an MP3.
 6. **Play.** It appears in that child's player and on their device.
 
+## Screenshots
+
+From a demo setup with made-up kids (Sam, Maya and Leo).
+
+**Parent app**
+
+<table>
+<tr><td align="center" width="25%"><img src="docs/screenshots/review.png" width="200" alt="Approve from the judge's summary"><br><sub>Approve from the judge's summary</sub></td><td align="center" width="25%"><img src="docs/screenshots/library.png" width="200" alt="Ready to play, ratings, favorites"><br><sub>Ready to play, ratings, favorites</sub></td><td align="center" width="25%"><img src="docs/screenshots/new-story.png" width="200" alt="Ask for a story"><br><sub>Ask for a story</sub></td><td align="center" width="25%"><img src="docs/screenshots/new-story-options.png" width="200" alt="Tonight or now, series, long, rain"><br><sub>Tonight or now, series, long, rain</sub></td></tr>
+<tr><td align="center" width="25%"><img src="docs/screenshots/kids.png" width="200" alt="A profile per child, with notes"><br><sub>A profile per child, with notes</sub></td><td align="center" width="25%"><img src="docs/screenshots/family-and-rules.png" width="200" alt="Co-parents and banned words"><br><sub>Co-parents and banned words</sub></td><td align="center" width="25%"><img src="docs/screenshots/pronunciations.png" width="200" alt="Say names the right way"><br><sub>Say names the right way</sub></td><td align="center" width="25%"><img src="docs/screenshots/admin.png" width="200" alt="Models, voices, TTS servers"><br><sub>Models, voices, TTS servers</sub></td></tr>
+</table>
+
+**Child player**
+
+<table>
+<tr><td align="center" width="25%"><img src="docs/screenshots/child-player.png" width="200" alt="The child's player"><br><sub>The child's player</sub></td><td align="center" width="25%"><img src="docs/screenshots/child-playing.png" width="200" alt="Story time"><br><sub>Story time</sub></td></tr>
+</table>
+
 ## What's in the repo
 
 | Path | What |

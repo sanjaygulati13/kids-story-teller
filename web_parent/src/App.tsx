@@ -939,7 +939,11 @@ function Admin({ showToast, player }: { showToast: (m: string) => void; player: 
   useEffect(() => {
     api.models().then(setModels).catch(() => {});
     api.getSettings().then(setS).catch(() => {});
-    api.systemLoaded().then((r) => setLoaded(JSON.stringify(r.running?.[0]?.model || r.running || "—"))).catch(() => {});
+    // llama-swap reports which models are loaded; other gateways don't, and then the line is hidden
+    api.systemLoaded().then((r: any) => {
+      const names = (Array.isArray(r?.running) ? r.running : []).map((m: any) => m?.model ?? m).filter(Boolean);
+      setLoaded(names.join(", "));
+    }).catch(() => {});
     reloadLib();
   }, []);
 
@@ -1000,7 +1004,7 @@ function Admin({ showToast, player }: { showToast: (m: string) => void; player: 
           judge-all) to avoid per-story swaps. Pick a cloud judge to avoid swapping entirely.
         </p>
       )}
-      <p className="muted-note" style={{ marginTop: 8 }}>Currently in VRAM: {loaded || "—"}</p>
+      {loaded && <p className="muted-note" style={{ marginTop: 8 }}>Loaded on the GPU now: {loaded}</p>}
 
       <h3 style={{ marginTop: 18 }}>Voice (TTS)</h3>
       <label className="fl">Engine</label>
